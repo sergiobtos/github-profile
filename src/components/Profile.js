@@ -13,29 +13,19 @@ class Profile extends Component{
 
 
    componentDidMount(){
-       var token = "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";
-       let header = new Headers({"Content-Type":"application/json", "Authorization":"token "+token});
-       fetch('https://api.github.com/users/sergiobtos', {
-           method: 'GET',
-           headers: header
-       })
-       .then(response => response.json())
-       .then(json => {
-           console.log(json)
-           this.setState({
-               userInfo : json
-           })
-       })
-       .catch(error => {
-           console.log(error)
-       });
+      this.props.fetchProfile();
+   }
+
+   UNSAFE_componentWillReceiveProps(nextProps){
+      this.setState({
+          userInfo : nextProps.profile
+      }) 
    }
 
    updateValue(type, event){
         var userInfoCopy = JSON.parse(JSON.stringify(this.state.userInfo));
         userInfoCopy[type] = event.target.value;
         this.setState({userInfo: userInfoCopy});
-        console.log(this.state.userInfo);
    }
 
     render() {

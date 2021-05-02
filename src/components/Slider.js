@@ -15,12 +15,11 @@ class SliderComponent extends Component{
         return(
             <div>
                 <Slider { ...settings}>
-                    <div><h3>1</h3></div>
-                    <div><h3>2</h3></div>
-                    <div><h3>3</h3></div>
-                    <div><h3>4</h3></div>
-                    <div><h3>5</h3></div>
-                    <div><h3>6</h3></div>
+                    <div><h3>{this.props.profile.name}</h3></div>
+                    <div><img src= {this.props.profile.avatar_url} alt='avatar'/></div>
+                    <div><h3>{this.props.profile.bio}</h3></div>
+                    <div><h3>{this.props.profile.company}</h3></div>
+                    <div><h3>{this.props.profile.location}</h3></div>
                 </Slider>
             </div>
         );
