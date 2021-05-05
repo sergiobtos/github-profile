@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchProfile } from '../actions/actions_profile';
+import { fetchProfile , saveProfile} from '../actions/actions_profile';
 
 import ProfileComponent from '../components/Profile';
 
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchProfile : () => {
             dispatch(fetchProfile());
+        },
+        saveProfile : (profile) => {
+            dispatch(saveProfile(profile));
         }
     }
 }

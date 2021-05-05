@@ -8,15 +8,19 @@ class App extends Component {
     constructor(props){
       super(props);
       this.state = {
-        currentTab : 'profile'
+        currentTab : 'slider'
       }
     }
+
+    componentDidMount(){
+      this.props.fetchProfile();
+   }
 
     render() {
     return (
     <div>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="/">My GitHub Profile</Navbar.Brand>
+      <Navbar.Brand href="/#" onClick={() => this.setState({currentTab: 'slider'})}>My GitHub Profile</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">

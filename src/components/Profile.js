@@ -6,8 +6,9 @@ class Profile extends Component{
     constructor(props){
         super(props);
         this.state = { 
-            userInfo : {},
-            editing : false
+            userInfo : this.props.profile,
+            editing : false,
+            error : false
         }
     }
 
@@ -28,12 +29,18 @@ class Profile extends Component{
         this.setState({userInfo: userInfoCopy});
    }
 
+   saveProfile(){
+       this.props.saveProfile(this.state.userInfo)
+   }
+
     render() {
         return(
             
             <div className="container">
                 <div>
-                    <Button variant="outline-primary" onClick={()=> this.setState({editing: !this.state.editing})}>Edit</Button>
+                    <Button variant="outline-primary" onClick={()=> this.setState({editing: !this.state.editing})}>
+                        {this.state.editing ? 'Cancel Edit': 'Edit'}
+                    </Button>
                 </div>
                 <hr/>
                 {this.state.editing ? 
@@ -43,6 +50,7 @@ class Profile extends Component{
                         <Form.Control 
                             type="text" 
                             placeholder="Name should be here"
+                            className={this.state.error&&this.state.userInfo.name==='' ? 'red-border' : ''}
                             value={this.state.userInfo.name}
                             onChange={this.updateValue.bind(this, 'name')} />
                     </Form.Group>
@@ -51,6 +59,7 @@ class Profile extends Component{
                         <Form.Control 
                             type="text" 
                             placeholder="Bio should be here"
+                            className={this.state.error&&this.state.userInfo.bio==='' ? 'red-border' : ''}
                             value={this.state.userInfo.bio}
                             onChange={this.updateValue.bind(this, 'bio')} />
                     </Form.Group>
@@ -59,6 +68,7 @@ class Profile extends Component{
                         <Form.Control 
                             type="text" 
                             placeholder="Location should be here"
+                            className={this.state.error&&this.state.userInfo.location==='' ? 'red-border' : ''}
                             value={this.state.userInfo.location}
                             onChange={this.updateValue.bind(this, 'location')} />
                     </Form.Group>
@@ -67,8 +77,10 @@ class Profile extends Component{
                         <Form.Control 
                             type="text" 
                             placeholder="Company should be here"
+                            className={this.state.error&&this.state.userInfo.company==='' ? 'red-border' : ''}
                             value={this.state.userInfo.company}
                             onChange={this.updateValue.bind(this, 'company')} />
+                            <Button bsstyle="info" onClick={this.saveProfile.bind(this)}>Save</Button>
                     </Form.Group>
                     </Form>
                 :

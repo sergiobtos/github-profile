@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import './index.css';
-import App from './components/App';
+import App from './containers/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 let store = createStore(

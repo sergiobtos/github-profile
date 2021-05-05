@@ -16,3 +16,16 @@ code {
 .slick-slider{
   text-align: center;
 }
+
+
+.slick-slider img {
+  margin: 0 auto;
+}
+
+.red-border{
+  border : red thin solid;
+}
+
+input {
+  margin-bottom: 10px;
+}
